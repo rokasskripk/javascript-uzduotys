@@ -105,11 +105,17 @@ if (sk1 == 2) {
 /* 06.
 Naudokite funkcija Math.random(). Atspausdinkite 3 skaičius nuo -10 iki 10. Skaičiai mažesni už 0 turi būti  laužtiniuose skliaustuose [], 0 -  (), didesni už 0 {}.
 */
-let skl1 = Math.floor(Math.random() * 21) - 10;
-let skl2 = Math.floor(Math.random() * 21) - 10;
-let skl3 = Math.floor(Math.random() * 21) - 10;
 
-
+for (let i = 0; i < 3; i++) {
+    let randomNum = Math.floor(Math.random() * 21) - 10;
+    if (randomNum < 0) {
+      console.log(`[${randomNum}]`);
+    } else if (randomNum === 0) {
+      console.log(`(${randomNum})`);
+    } else {
+      console.log(`{${randomNum}}`);
+    }
+  }
 
 /* 07.
 Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 1000 EUR taikoma 3 % nuolaida, daugiau kaip už 2000 EUR - 4 % nuolaida. Parašykite programą, kuri skaičiuos žvakių kainą ir atspausdintų atsakymą kiek žvakių ir kokia kaina perkama. Žvakių kiekį generuokite ​Math.random()​ funkcija nuo 5 iki 3000.
@@ -167,22 +173,27 @@ if (kn1 == 0 && kn2 == 0 && kn3 == 0) {
 /* 09.
 Padarykite skaitmeninį laikrodį, rodantį valandas, minutes ir sekundes. Valandom, minutėm ir sekundėm sugeneruoti panaudokite funkciją Math.random(). Sugeneruokite skaičių nuo 0 iki 300. Tai papildomos sekundės. Skaičių pridėkite prie jau sugeneruoto laiko. Atspausdinkite laikrodį prieš ir po sekundžių pridėjimo ir pridedamų sekundžių skaičių.
 */
-let totsek = Math.round(Math.random() * 86400);
-let val = Math.floor(totalSeconds / 3600);
-let minut = Math.floor((totalSeconds - (hours * 3600)) / 60);
-let sek = totalSeconds - (hours * 3600) - (mins * 60);
+let currentTime = new Date();
+let extraSeconds = Math.floor(Math.random() * 301);
+
+console.log(`Dabartinis laikas: ${currentTime.toLocaleTimeString()}`);
+
+currentTime.setSeconds(currentTime.getSeconds() + extraSeconds);
+
+console.log(`Po ${extraSeconds} sekundžių: ${currentTime.toLocaleTimeString()}`);
 
 
 /* 10.
 Naudokite funkciją Math.random(). Sugeneruokite 6 kintamuosius su atsitiktinėm reikšmėm nuo 1000 iki 9999. Atspausdinkite reikšmes viename string'e, išrūšiuotas nuo didžiausios iki mažiausios, atskirtas tarpais. Naudoti ciklų ir masyvų NEGALIMA.
 */
 
-let kint1 = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
-let kint2 = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
-let kint3 = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
-let kint4 = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
-let kint5 = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
-let kint6 = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
+let num1 = Math.floor(Math.random() * 9000) + 1000;
+let num2 = Math.floor(Math.random() * 9000) + 1000;
+let num3 = Math.floor(Math.random() * 9000) + 1000;
+let num4 = Math.floor(Math.random() * 9000) + 1000;
+let num5 = Math.floor(Math.random() * 9000) + 1000;
+let num6 = Math.floor(Math.random() * 9000) + 1000;
 
-let first = Math.max(kint1, kint2, kint3, kint4, kint5, kint6);
-let last = Math.min(kint1, kint2, kint3, kint4, kint5, kint6); 
+let sortedNumbers = [num1, num2, num3, num4, num5, num6].sort((a, b) => b - a);
+
+console.log(sortedNumbers.join(", "));

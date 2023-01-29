@@ -158,8 +158,9 @@ Rezultatas:
 Lietuvoje šiuo metu -3.3 laipsnių pagal Celsijų
 */
 
-let tekstas = "Lietuvoje šiuo metu laipsnių pagal Celsijų";
-let oras = (26 - 32) * 0.5556;
+let temperatureF = 26;
+let temperatureC = (temperatureF - 32) * (5 / 9);
+console.log(`Lietuvoje šiuo metu ${temperatureC.toFixed(1)} laipsnių pagal Celsijų`);
 
 /*
 Užduotis 10
@@ -219,3 +220,23 @@ Modelis: acer peizažas
 Kaina: 1240
 Spalvos: balta ir juoda
 */
+let pcs = [
+    { "modelis":"lenovo idėja", "kaina":1234, "spalva":{"raudona":1,"žalia":2} },
+    { "modelis":"hp monstras", "kaina":800, "spalva":{"juoda":2,"geltona":0} },
+    { "modelis":"toshiba sriuba", "kaina":256, "spalva":{"mėlyna":3,"žalia":1} },
+    { "modelis":"dell apskritimas", "kaina":697, "spalva":{"juoda":1,"balta":2} },
+    { "modelis":"acer peizažas", "kaina":620, "spalva":{"juoda":4,"balta":2} },
+    { "modelis":"apple 256", "kaina":2560, "spalva":{"balta":3,"juoda":1} },
+    { "modelis":"asus pokšt", "kaina":1001, "spalva":{"juoda":2,"geltona":3} }
+  ];
+  
+  let options = "Galimi variantai:\n\n";
+  for (let i = 0; i < pcs.length; i++) {
+    for (let color in pcs[i].spalva) {
+      if ((color === "balta" || color === "juoda") && pcs[i].spalva[color] >= 2 && pcs[i].kaina * 2 <= 1600) {
+        options += "Modelis: " + pcs[i].modelis + "\n" + "Kaina: " + (pcs[i].kaina * 2) + "\n" + "Spalvos: " + color + "\n\n";
+      }
+    }
+  }
+  console.log(options);
+  
